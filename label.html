@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>标签管理</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/index.css" >
+</head>
+<body>
+<header>
+    <div class="container">
+        <nav class="navbar navbar-expand">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">重庆工程学院</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a class="nav-link" href="index.html"><span class="glyphicon glyphicon-home"></span>后台首页</a>
+                            <div class="line"></div>
+                        </li>
+                        <li class="nav-item"><a  class="nav-link" href="user.html"><span class="glyphicon glyphicon-user"></span>用户管理</a>
+                            <div class="line"></div></li>
+                        <li class="nav-item"><a class="nav-link" href="content.html"><span class="glyphicon glyphicon-list-alt"></span>内存管理</a>
+                            <div class="line"></div></li>
+                        <li class="nav-item active"><a class="nav-link" href="label.html"><span class="glyphicon glyphicon-tags"></span>标签管理</a>
+                            <div class="line"></div></li>
+                    </ul>
+                    <ul class="nav nav-tabs navbar-right">
+                        <li class="nav-item dropdown">
+                            <a id="author" class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                admin
+                            </a>
+                            <ul class="dropdown-menu">
+                                <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-screenshot"></span>前台首页</a>
+                                <a class="dropdown-item" href="userindex.html"><span class="glyphicon glyphicon-user"></span>个人主页</a>
+                                <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-cog"></span>个人设置</a>
+                                <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-credit-card"></span>账户中心</a>
+                                <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-star"></span>我的收藏</a>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="login.html" class="nav-link"><span class="glyphicon glyphicon-off"></span>退出</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<div class="container u-manage">
+    <div class="row u-border">
+        <div class="u-title "> <span class="glyphicon glyphicon-star-empty"></span><span class="glyphicon glyphicon-star-empty"></span>标签管理
+            <span class="glyphicon glyphicon-star-empty">
+            </span><span class="glyphicon glyphicon-star-empty"></span></div>
+    </div>
+    <div class="container-fluid" style="height: 410px;position:relative;background-color: #fff">
+
+        <div class="u-list" >
+            <div class="container-fluid" style="padding: 0">
+                <form>
+                    <div class="form-group row" style="margin-top: 30px">
+                        <div class="col-10 input-group">
+                            <input type="text" id="labelname" class="form-control"  placeholder="请输入要添加的标签">
+                        </div>
+                        <div class="col-2 input-group">
+                        <button type="button" class="btn btn-primary" onclick="addLabel()" style="margin-left: 60px;margin-top: 0">添加</button>
+                    </div>
+                    </div>
+
+                </form>
+                <div class="lable" id="labelcontent" style="display: flex">
+                    <div class="label1" id="label1">
+
+                    </div>
+                    <div class="addlab" id="addlab" style="display: inline-block; margin-left: 3px">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="height: 200px">
+            <div class="img-left" style="width:200px;height: 400px;margin:-155px  0 0 -20px;overflow: hidden;">
+                <img src="img/label1.png" style="height: 100%"/>
+            </div>
+            <div class="img-right" style="width:500px;height: 200px;margin: -190px 30px 0 0;float:right;overflow: hidden;">
+                <img src="img/label.png" style="width: 100%;margin-top: -150px"/>
+            </div>
+        </div>
+
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <div class="text-center">
+            Yui ©2019-2020
+        </div>
+    </div>
+</footer>
+<script>
+
+    let labels =[];
+    $.ajax('http://127.0.0.1:7300/mock/5eec18c6590812445c83ea5f/label',{
+        success:res=>{
+            labels = res.data.label;
+            for (let i in labels){
+                $('#label1').append(`
+                <div class="lab" id="lab" >
+                        <strong>${labels[i].labelname}</strong>
+                        <button type="button" class="close" onclick="closeLabel(${labels[i].id})" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                `)
+            }
+        }
+    });
+//   添加标签
+    function addLabel() {
+        let node = `
+                    <div class="lab" id="lab"  >
+                        <strong>${$('#labelname').val()}</strong>
+                        <button type="button" class="close" id="close2" onclick="dellab()" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+`;
+        $('#addlab').append(node);
+        $('#labelname').val("");
+    }
+//   删除标签
+   function dellab() {
+           $('#close2').parent().remove();
+   }
+
+    function closeLabel(label) {
+        for (let l in labels){
+            if (labels[l].id==label){
+                labels.splice(l, 1);
+                $('#label1').html("");
+                for (let i in labels){
+                    $('#label1').append(`
+                <div class="lab" id="lab" >
+                        <strong>${labels[i].labelname}</strong>
+                        <button type="button" class="close" onclick="closeLabel(${labels[i].id})" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                `)
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
