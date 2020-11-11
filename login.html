@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+    <style>
+        body{
+            overflow: hidden;
+            position: fixed;
+            width:100%;
+            height:100%;
+        }
+        section{
+            height: 90%;
+            overflow: hidden;
+        }
+        form{
+            width: 700px;
+            height: 350px;
+            border-radius: 5px;
+            background: white;
+            margin:100px 0 0 350px;
+            position: absolute;
+            display: flex;
+            box-shadow: 1px 3px 10px #1b1b1b;
+        }
+        .input-group{
+            margin-top: 20px;
+        }
+        .zc{
+            color: #488BF0;
+        }
+        .zc:hover{
+            cursor: pointer;
+            text-decoration:underline;
+        }
+        h3{
+            text-align: center;
+            color: #89b0c0;
+            font-weight: bold;
+        }
+
+        h5{
+            padding: 15px 0 0 10px;
+        }
+        .col-md-4{
+            font-size: 16px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+        }
+        .container-fluid .btn{
+            margin: 0;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+<section class="container-fluid" style="margin-top: 0;padding: 0;position:relative">
+        <form action="#">
+            <div class="left" style="width: 50%;overflow: hidden">
+                <img src="img/login.png" style="height: 130%;margin:-50px 0 0 -130px "/>
+            </div>
+            <div class="right" style="width: 50%">
+                <h3>登 录 账 户</h3>
+                <div class="row form-inline text-center">
+                    <div class="col-12 input-group">
+                        <span class="col-md-4">用户名：</span><input id="username" type="text" class="form-control col-md-7">
+                    </div>
+                </div>
+                <div class="form-inline row  text-center">
+                    <div class="col-12 input-group">
+                        <span class="col-md-4">密　码：</span><input id="password" type="password" class="form-control col-md-7">
+                    </div>
+                </div>
+                <div class="form-inline row  text-center">
+                        <div class="col-12 input-group">
+                            <input type="checkbox">  下次自动登录
+                        </div>
+                    <div class="col-12 input-group">
+                        <button type="button" class="btn btn-danger" id="login" >登　录</button>
+                    </div>
+                    <div class="col-12 input-group">
+                        <p class="zc">没有账号？注册</p>
+                    </div>
+                    </div>
+            </div>
+
+        </form>
+    <img src="img/personal.jpg" class="img-fluid" style="width: 100%;margin-top:-130px;"/>
+
+</section>
+<footer style="margin-top: 0">
+    <div class="container">
+        <div class="text-center">
+            Yui ©2019-2020
+        </div>
+    </div>
+</footer>
+<script>
+    $.ajax('http://127.0.0.1:7300/mock/5eec18c6590812445c83ea5f/personal',{
+        success:res=>{
+            var inform = res.data.inform;
+            let username = inform[0].name;
+            let password =inform[0].password;
+
+            $('#login').click(function () {
+                let username2 = $('#username').val();
+                let password2 =$('#password').val();
+                console.log( username2 ,password2)
+                if (username == username2 && password==password2){
+                    window.location.href='index.html?username=admin'
+                    // $(location).attr('href', 'index.html');
+                }else if (password!=password2){
+                    alert("密码错误")
+                }else{
+                    alert("用户名错误")
+                }
+            });
+
+        }
+
+    });
+
+
+
+</script>
+</body>
+</html>
