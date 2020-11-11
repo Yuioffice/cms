@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script type="text/javascript" src="js/echarts.min.js"></script>
+    <script type="text/javascript" src="js/westeros.js"></script>
+    <style>
+        h3{
+            margin-top: 0;
+            padding-top: 30px;
+        }
+        .fade{
+            opacity: 1;
+        }
+        .nav-link{
+            line-height: 50px;
+        }
+        .nav-pills .nav-link.active{
+            background-color: #89b0c0;
+        }
+
+    </style>
+</head>
+<body style="background-color: #ededed;">
+<header>
+    <div class="container">
+        <nav class="navbar navbar-expand" style="padding-top: 0;border: none">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">重庆工程学院</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item"><a class="nav-link"  href="index.html"><span class="glyphicon glyphicon-home"></span>后台首页</a>
+                            <div class="line"></div>
+                        </li>
+                        <li class="nav-item"><a  class="nav-link" href="user.html"><span class="glyphicon glyphicon-user"></span>用户管理</a>
+                            <div class="line"></div></li>
+                        <li class="nav-item"><a class="nav-link" href="content.html"><span class="glyphicon glyphicon-list-alt"></span>内存管理</a>
+                            <div class="line"></div></li>
+                        <li class="nav-item"><a href="label.html" class="nav-link"><span class="glyphicon glyphicon-tags"></span>标签管理</a>
+                            <div class="line"></div></li>
+                    </ul>
+                    <ul class="nav nav-tabs navbar-right">
+                        <li class="nav-item dropdown">
+                            <a class="dropdown-toggle nav-link" id="admin" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                admin
+                            </a>
+                            <ul class="dropdown-menu">
+                                <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-screenshot"></span>前台首页</a>
+                                <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-user"></span>个人主页</a>
+                                <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-cog"></span>个人设置</a>
+                                <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-credit-card"></span>账户中心</a>
+                                <a class="dropdown-item" href="#"><span class="glyphicon glyphicon-star"></span>我的收藏</a>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="login.html" class="nav-link"><span class="glyphicon glyphicon-off"></span>退出</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<section>
+    <div class="container-fluid" style="height: 500px;display: flex;">
+    <nav class="nav nav-pills flex-column" id="nav-tab" role="tablist" style="width: 20%;background-color:#fff;border-radius: 5px;box-shadow: 0px 2px 5px #8c8c8c">
+        <a class="nav-link text-center"  id="nav-home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="nav-home" aria-selected="true">前台首页</a>
+        <a class="nav-link active text-center" id="nav-personal-tab" data-toggle="pill" href="#personal" role="tab" aria-controls="nav-personal" aria-selected="false">个人主页</a>
+        <a class="nav-link text-center" id="nav-setting-tab" data-toggle="pill" href="#setting" role="tab" aria-controls="nav-setting" aria-selected="false">个人设置</a>
+        <a class="nav-link text-center" id="nav-account-tab" data-toggle="pill" href="#account" role="tab" aria-controls="nav-account" aria-selected="false">账户中心</a>
+        <a class="nav-link text-center" id="nav-collect-tab" data-toggle="pill" href="#collect" role="tab" aria-controls="nav-collect" aria-selected="false">我的收藏</a>
+        <div class="personal" style="overflow: hidden;width: 500px;height: 180px;margin:320px 0 0 -120px;position: absolute">
+            <img src="img/personal.png"  style="width: 100%;margin-top: -60px"/>
+        </div>
+    </nav>
+        <div class="tab-content" id="nav-tabContent" style="width: 80%;height:100%;margin-left: 20px;">
+            <div class="tab-pane fade text-center" style="height: 100%;background-color:#fff;box-shadow: 2px 2px 5px #8c8c8c;border-radius: 5px" id="home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <h3>待开发</h3>
+                <div class="wait" style="height: 500px;width: 500px;margin: 0 auto;overflow: hidden">
+                    <img src="img/wait.png"style="width: 100%"/>
+                </div>
+            </div>
+            <div class="tab-pane fade show active" style="flex-direction: column;height: 100%;" id="personal" role="tabpanel" aria-labelledby="nav-profile-tab">
+<!--               个人信息-->
+                <div class="inform" style="height:130px;background-color:#fff;box-shadow: 2px 2px 5px #8c8c8c;border-radius: 5px">
+                    <div class="i-content" style="width: 70%;height: 100%;margin: 0 auto;border-top: 5px solid #88afc0;display: flex">
+<!--                        头像-->
+                        <div class="head-img" style="width: 80px;height: 80px;overflow: hidden;border-radius: 50px;margin: auto 0">
+                            <img src="img/admin.jpg" style="height: 100%"/>
+                        </div>
+                        <div class="i-message" id="i-message" style="width: 500px;height: 70%;line-height: 60%;margin: auto 0 auto 30px">
+                        </div>
+                        <div class="bg" style="width: 100px;height: 300px;overflow: hidden" >
+                            <img src="img/personal1.png" style="height: 100%;margin: -120px 0 0 -210px"/>
+                        </div>
+                    </div>
+                </div>
+<!--                操作数据统计-->
+                <div class="data" style="height: 350px;flex-direction: column;margin-top: 20px;background-color:#fff;box-shadow: 2px 2px 5px #8c8c8c;border-radius: 5px;padding-top: 15px">
+                    <div class="data-title" style="width: 100%;height: 30px;border-left: 5px solid #88afc0;">
+                        <div class="title" style="height: 30px;float:left">
+                            <h4 style="line-height: 30px;text-align: center; margin:0 0 0 5px;color:#88afc0;font-weight: bold ">操作数据统计</h4>
+                        </div>
+                        <div class="date" id="date" style="float:right;width: 200px;height: 100%">
+                        </div>
+                    </div>
+                    <div class="data-content">
+                        <div id="main" style="width: 800px;height:320px;margin: 0 auto"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade text-center" style="height: 100%;background-color:#fff;box-shadow: 2px 2px 5px #8c8c8c;border-radius: 5px" id="setting" role="tabpanel" aria-labelledby="nav-contact-tab">
+                <h3>待开发</h3>
+                <div class="wait" style="height: 500px;width: 500px;margin: 0 auto;overflow: hidden">
+                    <img src="img/wait.png"style="width: 100%"/>
+                </div>
+            </div>
+            <div class="tab-pane fade text-center" style="height: 100%;background-color:#fff;box-shadow: 2px 2px 5px #8c8c8c;border-radius: 5px" id="account" role="tabpanel" aria-labelledby="nav-contact-tab">
+                <h3>待开发</h3>
+                <div class="wait" style="height: 500px;width: 500px;margin: 0 auto;overflow: hidden">
+                    <img src="img/wait.png"style="width: 100%"/>
+                </div>
+            </div>
+            <div class="tab-pane fade text-center" style="height: 100%;background-color:#fff;box-shadow: 2px 2px 5px #8c8c8c;border-radius: 5px" id="collect" role="tabpanel" aria-labelledby="nav-contact-tab">
+                <h3>待开发</h3>
+                <div class="wait" style="height: 500px;width: 500px;margin: 0 auto;overflow: hidden">
+                    <img src="img/wait.png"style="width: 100%"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="container">
+        <div class="text-center">
+            Yui ©2019-2020
+        </div>
+    </div>
+</footer>
+<script type="text/javascript" src="js/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script>
+    $.ajax('http://127.0.0.1:7300/mock/5eec18c6590812445c83ea5f/personal',{
+        success:res=> {
+            var myChart = echarts.init(document.getElementById('main'), 'westeros');
+            var colorArr = ['#a5e7f0', '#ed7b67', '#fec593', '#93b7e3'];
+            var datacharts = res.data.datacharts;
+            var inform = res.data.inform;
+            let today =new Date();
+            month =(today.getMonth()+1);
+            day =today.getDate();
+            if(month<10){
+                month = '0'+(today.getMonth()+1);
+            }
+            if(day<10){
+                day = '0'+today.getDate();
+            }
+
+            $('#i-message').append(`
+<h4 id="name" style="display: inline-block;color: #6a8995;font-weight: bold">${$('#admin').html()}</h4><span style="margin-left: 30px">${inform[0].identity}</span>
+                            <br><p style="line-height: 50px;display: inline-block">联系方式：${inform[0].phone}</p>
+                            <p style="line-height: 50px;display: inline-block;margin-left: 50px">邮     箱：${inform[0].email}</p>
+
+`);
+            $('#date').append(`
+            <span class="glyphicon glyphicon-time" style="font-size: 16px"> ${today.getFullYear()+'-'+month+'-'+day}</span>
+            `)
+            myChart.setOption({
+                legend: {
+
+                        textStyle: {
+                            color: '#6a8995',
+                            fontSize:'14'
+                        }
+                    },
+                tooltip: {
+                    trigger: 'axis',
+                    showContent: true,
+
+                },
+                dataset: {
+                    source: [
+                        ['product', '周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                        [datacharts[0].title, datacharts[0].array[0], datacharts[0].array[1], datacharts[0].array[2], datacharts[0].array[3], datacharts[0].array[4], datacharts[0].array[5], datacharts[0].array[6]],
+                        [datacharts[1].title, datacharts[1].array[0], datacharts[1].array[1], datacharts[1].array[2], datacharts[1].array[3], datacharts[1].array[4], datacharts[1].array[5], datacharts[1].array[6]],
+                        [datacharts[2].title, datacharts[2].array[0], datacharts[2].array[1], datacharts[2].array[2], datacharts[2].array[3], datacharts[2].array[4], datacharts[2].array[5], datacharts[2].array[6]],
+                        [datacharts[3].title, datacharts[3].array[0], datacharts[3].array[1], datacharts[3].array[2], datacharts[3].array[3], datacharts[3].array[4], datacharts[3].array[5], datacharts[3].array[6]]
+                    ]
+                },
+                xAxis: {type: 'category',
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#000',
+                            fontSize:'14'
+                        }
+                    },
+                    axisLine:{
+                        lineStyle:{
+                            color:'#606060'
+                        }
+                    }
+                },
+                yAxis: {
+                    axisLabel: {
+                        show: true,
+                        textStyle: {
+                            color: '#000',
+                            fontSize:'14'
+                        }
+                    },
+                    axisLine:{
+                        lineStyle:{
+                            color:'#606060'
+                        }
+                    }
+                },
+                series: [
+                    {
+                        type: 'line', smooth: true, seriesLayoutBy: 'row', areaStyle: {normal: {}},
+                        areaStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ //关键在这里, 设置面积渐变
+                                    offset: 0,
+                                    color: colorArr[0] //这里是我设置的渐变的颜色从线条颜色变为白色，如果是循环数据，其中的0依次循环colorArr 就ok了
+                                }, {
+                                    offset: 1,
+                                    color: '#eaeaea'
+                                }])
+                            }
+                        }
+                    },
+                    {
+                        type: 'line', smooth: true, seriesLayoutBy: 'row', areaStyle: {normal: {}},
+                        areaStyle: {
+                            normal: {
+                                opacity: 0.6,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ //关键在这里, 设置面积渐变
+                                    offset: 0,
+                                    color: colorArr[1] //这里是我设置的渐变的颜色从线条颜色变为白色，如果是循环数据，其中的0依次循环colorArr 就ok了
+                                }, {
+                                    offset: 1,
+                                    color: '#fff'
+                                }])
+                            }
+                        }
+                    },
+                    {
+                        type: 'line', smooth: true, seriesLayoutBy: 'row', areaStyle: {normal: {}},
+                        areaStyle: {
+                            normal: {
+                                opacity: 0.6,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ //关键在这里, 设置面积渐变
+                                    offset: 0,
+                                    color: colorArr[2] //这里是我设置的渐变的颜色从线条颜色变为白色，如果是循环数据，其中的0依次循环colorArr 就ok了
+                                }, {
+                                    offset: 1,
+                                    color: '#fff'
+                                }])
+                            }
+                        }
+                    },
+                    {
+                        type: 'line', smooth: true, seriesLayoutBy: 'row', areaStyle: {normal: {}},
+                        areaStyle: {
+                            normal: {
+                                opacity: 0.6,
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{ //关键在这里, 设置面积渐变
+                                    offset: 0,
+                                    color: colorArr[3] //这里是我设置的渐变的颜色从线条颜色变为白色，如果是循环数据，其中的0依次循环colorArr 就ok了
+                                }, {
+                                    offset: 1,
+                                    color: '#fff'
+                                }])
+                            }
+                        }
+                    }
+                ]
+
+            })
+
+        }
+    })
+
+</script>
+</body>
+</html>
